@@ -12,6 +12,7 @@ import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
 import { OrderComponent } from './order/order.component';
 import { TradesComponent } from './trades/trades.component';
+import { RegistrationService } from './registration.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TradesComponent } from './trades/trades.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
