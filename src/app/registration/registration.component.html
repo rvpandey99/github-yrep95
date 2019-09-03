@@ -1,37 +1,48 @@
 <!-- Header -->
-<div class="container">
-  <h1 class="brand">Online Trading</h1>
-</div>
+<nav>
+  <div class="logo">
+    <span>
+      <strong class="brand">Online Trading</strong>
+    </span>
+  </div>
+  <hr>
+  <div class="nav-items">
+    <a routerLink='/login'><strong>Log in</strong></a>
+  </div>
+  <hr>  
+</nav>
 
-<!-- Registration form -->
-<div class="container">
-  <form>
-    <div class="form-group row">
+<div class="container mt-3">
+  <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
+    <div class="form-group row ">
       <label for="userId" class="col-md-3">User Id:</label>
-      <input type="text" class="form-control col-md-9" id="userId">
+      <input type="text" class="form-control col-md-7" formControlName="userId" id="userId">
     </div>
-    <div class="form-group row">
+    <div class="form-group row ">
       <label for="userName" class="col-md-3">User Name:</label>
-      <input type="text" class="form-control col-md-9" id="userName">
+      <input type="text" class="form-control col-md-7" formControlName="userName" id="userName">
     </div>
-    <div class="form-group row">
+    <div class="form-group row ">
       <label for="password" class="col-md-3">Password:</label>
-      <input type="password" class="form-control col-md-9" id="password">
+      <input type="password" class="form-control col-md-7" formControlName="password" id="password">
     </div>
-    <div class="form-group row">
+    <div class="form-group row ">
       <label for="verifyPassword" class="col-md-3">Verify Password:</label>
-      <input type="password" class="form-control col-md-9" id="verifyPassword">
+      <input type="password" class="form-control col-md-7" formControlName="verifyPassword" id="verifyPassword">
     </div>
-    <div class="form-group row">
+    <div class="form-group row ">
       <label for="email" class="col-md-3">Email:</label>
-      <input type="email" class="form-control col-md-9" id="email">
+      <input type="email" class="form-control col-md-7" formControlName="email" id="email">
     </div>
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-9">
-          <button type="submit" class="btn btn-success">Register</button>
-          <span class="ml-3"> or Click <a class="btn btn-outline-primary" routerLink='/login'>log in</a> </span>
+          <button [disabled]="!user.valid" type="submit" class="btn btn-success">Register</button>
+          <span class="ml-3"> or Click <a routerLink='/login'>log in</a> </span>
       </div>   
     </div>
+    <p>
+      Form Status: {{ user.status }}
+    </p>
   </form>
 </div>
