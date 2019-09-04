@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
     userName: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
     password: new FormControl('', [ Validators.required, Validators.minLength(6)]),
     verifyPassword: new FormControl('',[this.confirmPass]),
-    email: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
+    email: new FormControl('', [ Validators.required ]),
     });
     this.user.controls.password.valueChanges
     .subscribe(x => this.user.controls.verifyPassword.updateValueAndValidity());
