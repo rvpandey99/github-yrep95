@@ -11,6 +11,11 @@ export class RegistrationComponent implements OnInit {
   onSubmit(){
     
   }
+
+  isValid(controlName){
+    return this.user.get(controlName).invalid && this.user.get(controlName).touched;
+  }
+
   confirmPass(control: AbstractControl): {[key: string]: any} | null {
     if (control && (control.value !== null || control.value !== undefined)) {
       const repeatPass = control.value;
@@ -29,11 +34,11 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.user = new FormGroup({
-    userId: new FormControl('', [ Validators.required ]),
-    userName: new FormControl('', [ Validators.required ]),
-    password: new FormControl('', [ Validators.required ]),
+    userId: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
+    userName: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
+    password: new FormControl('', [ Validators.required, Validators.minLength(6)]),
     verifyPassword: new FormControl('',[this.confirmPass]),
-    email: new FormControl('', [ Validators.required ]),
+    email: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
     });
     this.user.controls.password.valueChanges
     .subscribe(x => this.user.controls.verifyPassword.updateValueAndValidity());
