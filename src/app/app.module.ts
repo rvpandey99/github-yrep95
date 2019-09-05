@@ -13,7 +13,7 @@ import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
 import { OrderComponent } from './order/order.component';
 import { TradesComponent } from './trades/trades.component';
-import { RegistrationService } from './registration.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { RegistrationService } from './registration.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RegistrationService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

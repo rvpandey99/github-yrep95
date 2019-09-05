@@ -12,11 +12,13 @@
   <hr>  
 </nav>
 
-<p *ngIf="successMessage">
-  Status:  {{ successMessage }}
+<p *ngIf="successMessage" class="m-auto">
+  Registration completed successfully.
+  <span>Please <a routerLink='/login'>Log in</a> </span>
 </p>
+<p *ngIf="errorMessage">Status: {{errorMessage}}</p>
 
-<div class="container mt-3">
+<div *ngIf="!successMessage"class="container mt-3">
   <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
     <div class="form-group row ">
       <label for="userId" class="col-md-3">User Id:</label>
@@ -47,7 +49,7 @@
       <div class="col-md-3"></div>
       <div class="col-md-9">
           <button [disabled]="!user.valid" type="submit" class="btn btn-success">Register</button>
-          <span class="ml-3"> or Click <a routerLink='/login'>log in</a> </span>
+          <span class="ml-3"> or click to <a routerLink='/login'>Log in</a> </span>
       </div>   
     </div>
   </form>

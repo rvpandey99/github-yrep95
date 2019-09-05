@@ -12,8 +12,13 @@
   <hr>  
 </nav>
 
-<div class="container mt-3">
-  <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
+<p *ngIf="successMessage" class="m-auto">
+{{successMessage}}
+</p>
+<p *ngIf="errorMessage">Status: {{errorMessage}}</p>
+
+<div *ngIf="!successMessage" class="container mt-3">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(user)">
     <div class="form-group row ">
       <label for="userId" class="col-md-3">User Id:</label>
       <input type="text" class="form-control col-md-7" formControlName="userId" id="userId">
@@ -27,7 +32,7 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-9">
-          <button [disabled]="!user.valid" type="submit" class="btn btn-success">Log in</button>
+          <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success">Log in</button>
           <span class="ml-3">
             or click to
             <a routerLink='/registration'>Register</a> 

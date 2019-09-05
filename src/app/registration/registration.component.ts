@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
-import { RegistrationService } from '../registration.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     return null;
   }
 
-  constructor(private _register: RegistrationService) {
+  constructor(private _auth: AuthService) {
   }
 
   ngOnInit() {
@@ -51,9 +51,9 @@ export class RegistrationComponent implements OnInit {
       password: this.user.value.password
     }
     console.log(body);
-    this._register.register(body).subscribe(
+    this._auth.register(body).subscribe(
       data => {this.successMessage = 'Registration successful.'},
-      error => {this.successMessage = 'Something went wrong.';
+      error => {this.errorMessage = 'Something went wrong.';
       console.log(error);}
     );
   }
