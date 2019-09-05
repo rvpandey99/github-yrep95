@@ -1,1 +1,38 @@
-<p>login works!</p>
+<!-- Header -->
+<nav>
+  <div class="logo">
+    <span>
+      <strong class="brand">Online Trading</strong>
+    </span>
+  </div>
+  <hr>
+  <div class="nav-items">
+    <a routerLink='/registration'><strong>Register</strong></a> 
+  </div>
+  <hr>  
+</nav>
+
+<div class="container mt-3">
+  <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
+    <div class="form-group row ">
+      <label for="userId" class="col-md-3">User Id:</label>
+      <input type="text" class="form-control col-md-7" formControlName="userId" id="userId">
+      <span *ngIf="isValid('userId')">User Id is required.</span>
+    </div>
+    <div class="form-group row ">
+      <label for="password" class="col-md-3">Password:</label>
+      <input type="password" class="form-control col-md-7" formControlName="password" id="password">
+      <span *ngIf="isValid('password')">Password should be grater than 6 characters.</span>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+          <button [disabled]="!user.valid" type="submit" class="btn btn-success">Log in</button>
+          <span class="ml-3">
+            or click to
+            <a routerLink='/registration'>Register</a> 
+          </span>
+      </div>   
+    </div>
+  </form>
+</div>
