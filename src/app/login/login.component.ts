@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     this._auth.login(body).subscribe(
-      data => {this.errorMessage = 'Something went wrong.'},
+      data => {this.errorMessage = 'Something went wrong.';
+      console.log(error);
+      },
       error => {this.successMessage = `Logged in successfully. Your token is` + error.text;
       console.log(error);}
     );
