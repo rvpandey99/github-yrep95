@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,9 +9,6 @@ import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/fo
 })
 export class RegistrationComponent implements OnInit {
   user:FormGroup;
-  onSubmit(){
-    
-  }
 
   isValid(controlName){
     return this.user.get(controlName).invalid && this.user.get(controlName).touched;
@@ -29,7 +27,8 @@ export class RegistrationComponent implements OnInit {
     }
     return null;
   }
-  constructor() {
+
+  constructor(private _register: RegistrationService) {
   }
 
   ngOnInit() {
@@ -43,5 +42,19 @@ export class RegistrationComponent implements OnInit {
     this.user.controls.password.valueChanges
     .subscribe(x => this.user.controls.verifyPassword.updateValueAndValidity());
   }
-
+  onSubmit(){
+    console.log(this.user.value);
+    const body = {
+      userId: this.user.value.userId,
+      userName: this.user.value.userName,
+      email: this.user.value.email,
+      password: this.user.value.password
+    }
+    console.log(body);
+    this._register.register(body).subscribe(
+      data => {this.successMessage = 'Registration successful.'},
+      error => {this.successMessage = 'Something went wrong.';
+      console.log(error);}
+    );
+  }
 }

@@ -12,6 +12,10 @@
   <hr>  
 </nav>
 
+<p *ngIf="successMessage">
+  Status:  {{ successMessage }}
+</p>
+
 <div class="container mt-3">
   <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
     <div class="form-group row ">
@@ -46,8 +50,5 @@
           <span class="ml-3"> or Click <a routerLink='/login'>log in</a> </span>
       </div>   
     </div>
-    <p>
-      Form Status: {{ user.status }}
-    </p>
   </form>
 </div>
