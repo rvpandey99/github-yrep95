@@ -42,6 +42,8 @@ export class RegistrationComponent implements OnInit {
     this.user.controls.password.valueChanges
     .subscribe(x => this.user.controls.verifyPassword.updateValueAndValidity());
   }
+
+
   onSubmit(){
     console.log(this.user.value);
     const body = {
@@ -50,11 +52,13 @@ export class RegistrationComponent implements OnInit {
       email: this.user.value.email,
       password: this.user.value.password
     }
-    console.log(body);
-    this._auth.register(body).subscribe(
-      data => {this.successMessage = 'Registration successful.'},
-      error => {this.errorMessage = 'Something went wrong.';
-      console.log(error);}
-    );
-  }
+    // console.log(body);
+      if(this.user.valid){
+        this._auth.register(body).subscribe(
+        data => {this.successMessage = 'Registration successful.'},
+        error => {this.errorMessage = 'Something went wrong.';
+        console.log(error);}
+      );
+    }
+  } 
 }

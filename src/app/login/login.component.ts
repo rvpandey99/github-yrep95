@@ -27,14 +27,15 @@ export class LoginComponent implements OnInit {
       userId: this.loginForm.value.userId,
       password: this.loginForm.value.password
     }
-    this._auth.login(body).subscribe(
-      data => {this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
-      // console.log(data);
-      },
-      error => {this.errorMessage = error.error || 'Something went wrong.';
-      // console.log(error.error);
-      }
-    );
+    if(this.loginForm.valid){
+      this._auth.login(body).subscribe(
+        data => {this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
+        localStorage.setItem('userToken',data);
+        },
+        error => {this.errorMessage = error.error || 'Something went wrong.';
+        // console.log(error.error);
+        }
+      );
+    }
   }
-
 }
