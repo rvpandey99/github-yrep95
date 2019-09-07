@@ -13,10 +13,10 @@
 </nav>
 
 <p *ngIf="successMessage" class="m-auto">
-  Registration completed successfully.
+  {{successMessage}}
   <span>Please <a routerLink='/login'>Log in</a> </span>
 </p>
-<p *ngIf="errorMessage">Status: {{errorMessage}}</p>
+<p *ngIf="errorMessage">{{errorMessage}}</p>
 
 <div *ngIf="!successMessage"class="container mt-3">
   <form [formGroup]="user" (ngSubmit)="onSubmit(user)">

@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.user.value);
+    // console.log(this.user.value);
     const body = {
       userId: this.user.value.userId,
       userName: this.user.value.userName,
@@ -56,7 +56,7 @@ export class RegistrationComponent implements OnInit {
       if(this.user.valid){
         this._auth.register(body).subscribe(
         data => {this.successMessage = 'Registration successful.'},
-        error => {this.errorMessage = 'Something went wrong.';
+        error => {this.errorMessage = error.error || 'Something went wrong.';
         console.log(error);}
       );
     }
