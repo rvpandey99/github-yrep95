@@ -16,7 +16,7 @@
   {{successMessage}}
   <span>Please <a routerLink='/login'>Log in</a> </span>
 </p>
-<p *ngIf="errorMessage">{{errorMessage}}</p>
+<p *ngIf="errorMessage && !successMessage">{{errorMessage}}</p>
 
 <div *ngIf="!successMessage"class="container mt-3">
   <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
