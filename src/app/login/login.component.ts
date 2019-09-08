@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
+  loading = false;
 
   isValid(controlName){
     return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
@@ -28,11 +29,16 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     if(this.loginForm.valid){
+      this.loading = true;
       this._auth.login(body).subscribe(
-        data => {this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
-        localStorage.setItem('userToken',data.token.toString());
+        data => {
+          this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
+          localStorage.setItem('userToken',data.token.toString());
+          this.loading = false;
         },
-        error => {this.errorMessage = error.error || 'Something went wrong.';
+        error => {
+          this.errorMessage = error.error || 'Something went wrong.';
+          this.loading = false;
         // console.log(error.error);
         }
       );
