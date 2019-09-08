@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,9 +33,9 @@ import { AuthService } from './auth.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService,JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

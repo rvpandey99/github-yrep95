@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this._auth.login(body).subscribe(
         data => {
           this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
-          localStorage.setItem('Token',data.token.toString());
+          localStorage.setItem('token',data.token.toString());
           localStorage.setItem('userName',data.userName.toString());
           this.loading = false;
           this._router.navigate(['home']);

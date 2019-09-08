@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     
   }
   logout(){
-    localStorage.removeItem('Token');
+    localStorage.removeItem('token');
     localStorage.removeItem('userName');
     this._router.navigate(['login']);
   }
