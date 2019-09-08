@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegistrationComponent implements OnInit {
   user:FormGroup;
+  loading = false;
 
   isValid(controlName){
     return this.user.get(controlName).invalid && this.user.get(controlName).touched;
@@ -54,10 +55,16 @@ export class RegistrationComponent implements OnInit {
     }
     // console.log(body);
       if(this.user.valid){
+        this.loading = true;
         this._auth.register(body).subscribe(
-        data => {this.successMessage = 'Registration successful.'},
-        error => {this.errorMessage = error.error || 'Something went wrong.';
-        console.log(error);}
+        data => {
+          this.successMessage = 'Registration successful.';
+          this.loading = false;
+        },
+        error => {
+          this.errorMessage = error.error || 'Something went wrong.';
+          this.loading = false;
+        }
       );
     }
   } 
