@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
   isValid(controlName){
     return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
   }
-  constructor(private _auth: AuthService) { }
+  constructor(
+    private _auth: AuthService,
+    private _router: Router, 
+    private _activeroute: ActivatedRoute) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -33,8 +37,10 @@ export class LoginComponent implements OnInit {
       this._auth.login(body).subscribe(
         data => {
           this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
-          localStorage.setItem('userToken',data.token.toString());
+          localStorage.setItem('Token',data.token.toString());
+          localStorage.setItem('userName',data.userName.toString());
           this.loading = false;
+          this._router.navigate(['home']);
         },
         error => {
           this.errorMessage = error.error || 'Something went wrong.';
