@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this._auth.login(body).subscribe(
         data => {this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
-        localStorage.setItem('userToken',data.toString());
+        localStorage.setItem('userToken',data.token.toString());
         },
         error => {this.errorMessage = error.error || 'Something went wrong.';
         // console.log(error.error);
