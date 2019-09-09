@@ -32,6 +32,11 @@ a:hover{
     color:darkorange;
 }
 
+.nav-user > a {
+  color: white;
+  cursor: pointer;
+}
+
 nav {
     display: grid;
     justify-items: center;
