@@ -17,6 +17,9 @@
 {{successMessage}}
 </p>
 <p *ngIf="errorMessage && !successMessage">Status: {{errorMessage}}</p>
+<div *ngIf="errorMessage && !successMessage" id="error" class="alert alert-danger">
+  Invalid credentials
+</div>
 
 <div *ngIf="!successMessage" class="col-md-6 offset-md-3 mt-5">
   <div class="card">
@@ -33,7 +36,7 @@
           <input type="password" class="form-control" formControlName="password" id="password" pattern="(?=.*[@#$%&^*()])[A-Za-z\d@#$%&^*()]{8,}">
           <span *ngIf="isValid('password')">Password should be greater than 8 characters and must include at least one special character from @#$%&^*)(.</span>
         </div>
-        <button [disabled]="!loginForm.valid || loading" type="submit" class="btn btn-success">
+        <button [disabled]="!loginForm.valid || loading" type="submit" class="btn btn-success" id="login">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Log in
         </button>

@@ -29,8 +29,8 @@
           <span *ngIf="isValid('userId')" >User Id is required.</span>
         </div>
         <div class="form-group ">
-          <label for="userName" >User Name:</label>
-          <input type="text" class="form-control " formControlName="userName" id="userName">
+          <label for="username" >User Name:</label>
+          <input type="text" class="form-control " formControlName="userName" id="username">
           <span *ngIf="isValid('userName')" >User Name is required.</span>
         </div>
         <div class="form-group ">
@@ -39,8 +39,8 @@
           <span *ngIf="isValid('password')" >Password should be greater than 8 characters and must include at least one special character from @#$%&^*)(</span>
         </div>
         <div class="form-group ">
-          <label for="verifyPassword" >Verify Password:</label>
-          <input type="password" class="form-control " formControlName="verifyPassword" id="verifyPassword">
+          <label for="verifypassword" >Verify Password:</label>
+          <input type="password" class="form-control " formControlName="verifyPassword" id="verifypassword">
           <span *ngIf="isValid('verifyPassword')" >Password should match.</span>
         </div>
         <div class="form-group ">
@@ -51,7 +51,7 @@
         <div class="row">
           <div ></div>
           <div class="col-md-9">
-              <button [disabled]="!user.valid" type="submit" class="btn btn-success">
+              <button [disabled]="!user.valid" type="submit" class="btn btn-success" id="regist">
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 Register
               </button>
