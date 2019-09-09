@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   isValid(controlName){
-    return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
+    return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched && this.loginForm.get(controlName).invalid;
   }
   constructor(
     private _auth: AuthService,
@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
     userId: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
-    password: new FormControl('', [ Validators.required, Validators.minLength(8)]),
+    password: new FormControl('', [ Validators.required,Validators.minLength(8)]),
     });
-  }
+  }//  Validators.pattern('(?=.*[@#$%&^*()])[A-Za-z\d@#$%&^*()]{8,}')
   
   onSubmit(){
     const body = {
