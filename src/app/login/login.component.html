@@ -25,7 +25,7 @@
   <div class="card">
     <h4 class="card-header">Log in</h4>
     <div class="card-body">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(user)">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group"> <!--  row  -->
           <label for="userId">User Id:</label> <!--  class="col-md-3" -->
           <input type="text" class="form-control" formControlName="userId" id="userId"> <!-- col-md-6-->
