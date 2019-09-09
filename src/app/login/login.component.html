@@ -31,7 +31,7 @@
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" class="form-control" formControlName="password" id="password">
-          <span *ngIf="isValid('password')">Password should be grater than 6 characters.</span>
+          <span *ngIf="isValid('password')">assword should be greater than 8 characters and must include at least one special character from @#$%&^*)(</span>
         </div>
         <button [disabled]="!loginForm.valid || loading" type="submit" class="btn btn-success">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
