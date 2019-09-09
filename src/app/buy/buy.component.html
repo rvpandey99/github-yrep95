@@ -7,10 +7,11 @@
   You can not buy and sell same stocks twice in a day.
 </div>
 <div *ngIf="warn" id="warn" class="alert alert-danger">
-  Backend and submit functionality has not been implemented yet.
+  Backend and submit functionality has not been implemented yet. Your form contains below data:
+  <br> {{buyForm.value | json}}
 </div>
 
-<div *ngIf="!successMessage" class="col-md-6 offset-md-3 mt-5">
+<div *ngIf="!successMessage" class="col-md-6 offset-md-3 mt-3">
   <div class="card">
     <h4 class="card-header">Buy</h4>
     <div class="card-body">
@@ -34,13 +35,13 @@
 
         <div class="form-group ">
           <label for="bprice" >Bid Price:</label>
-          <input type="text" class="form-control" formControlName="bprice" id="bprice">
+          <input type="number" class="form-control" formControlName="bprice" id="bprice">
           <span *ngIf="isValid('bprice')" >Bid Price is required.</span>
         </div>
 
         <div class="form-group ">
           <label for="qty" >Quantity:</label>
-          <input type="text" class="form-control" formControlName="qty" id="qty">
+          <input type="number" class="form-control" formControlName="qty" id="qty">
           <span *ngIf="isValid('qty')" >Quantity is required.</span>
         </div>
 
