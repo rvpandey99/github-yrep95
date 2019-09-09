@@ -1,25 +1,30 @@
 <nav>
     <div class="logo">
-      <a routerLink="/home">
+      <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+true}">
         <strong class="brand">Online Trading</strong>
       </a>
     </div>
     <hr>
   
     <div class="nav-items">
-      <a routerLink='/buy'><strong>Buy</strong></a>
+      <a routerLink='/buy' routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+true}"><strong>Buy</strong></a>
     </div>
     <hr>
     <div class="nav-items">
-      <a routerLink='/sell'><strong>Sell</strong></a>
+      <a routerLink='/sell'  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+true}"><strong>Sell</strong></a>
     </div>
     <hr>
     <div class="nav-items">
-      <a routerLink='/order'><strong>Orders</strong></a>
+      <a routerLink='/order' routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+true}"><strong>Orders</strong></a>
     </div>
     <hr>
     <div class="nav-items">
-      <a routerLink='/trades'><strong>Trades</strong></a>
+      <a routerLink='/trades' routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+true}"><strong>Trades</strong></a>
     </div>
     <hr>
   

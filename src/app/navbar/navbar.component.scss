@@ -32,6 +32,11 @@ a:hover{
     color:darkorange;
 }
 
+.active-link {
+  border-bottom: 4px solid orange;
+  padding-bottom: 5px;
+}
+
 .nav-user > a {
   color: white;
   cursor: pointer;
