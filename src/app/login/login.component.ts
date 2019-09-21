@@ -11,6 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   loading = false;
+  successMessage: String;
+  errorMessage: String;
 
   isValid(controlName){
     return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched && this.loginForm.get(controlName).invalid;
