@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.loading = true;
       this._auth.login(body).subscribe(
-        data => {
+        (data) => {
           this.successMessage = 'Logged in successfully. Welcome ' + data.userName;
           localStorage.setItem('token',data.token.toString());
           localStorage.setItem('userName',data.userName.toString());
           this.loading = false;
           this._router.navigate(['home']);
         },
-        error => {
+        (error) => {
           this.errorMessage = error.error || 'Something went wrong.';
           this.loading = false;
         // console.log(error.error);
